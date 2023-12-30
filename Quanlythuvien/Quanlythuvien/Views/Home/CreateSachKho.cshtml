@@ -1,0 +1,50 @@
+﻿@using Quanlythuvien.Models
+@{
+    ViewBag.Title = "CreateSachKho";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+
+    <div class="page-header">
+        <div>
+            <h1 class="font-weight-bold text-black" style="color:black">Tạo sách trong kho</h1>
+            <small>Trang chủ / Tạo sách trong kho</small>
+        </div>
+    </div>  <div class="page-content" style="display:flex; justify-content:space-between;">
+        <div class="">
+            <a class="btn12 active" href="@Url.Action("CreateSachKho","Home")">Thêm sách</a>
+            <a class="btn12 " href="@Url.Action("Quanlykho","Home")">Xem kho sách</a>
+
+        </div>
+    </div>
+
+    <div class="page-content borrow-book-infomation">
+        <div class="borrow-book-infomation-left">
+            @using (Html.BeginForm(Html.BeginForm("CreateSachKho", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset style="width:400px">
+                    <legend>Tên sách</legend>
+                    <div class="borrow-book-item">
+                        <span>Tên sách:</span><br>
+                        <input type="text" name="TenSach" required><br>
+                    </div>
+                    <div class="borrow-book-item">
+                        <span>Số lượng:</span><br>
+                        <input type="text" name="SoLuong" required><br>
+                    </div>
+                    <div class="borrow-book-item">
+                        <span>Ngày nhập kho:</span><br>
+                        <input type="date" name="NgayNhapKho" required><br>
+                    </div>
+                    
+                </fieldset>
+                <button class="btn btn-success btn-borrow-book" style="margin-top:24px;margin-left:150px" type="submit">Tạo sách</button>
+            }
+        </div>
+    </div>
+</main>
+
+<script src="~/Scripts/app.js"></script>
+

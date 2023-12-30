@@ -1,0 +1,57 @@
+﻿@model Quanlythuvien.Models.Sach
+@using Quanlythuvien.Models
+
+@{
+    ViewBag.Title = "SuaSach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var kho = ViewData["kho"] as List<KhoSach>;
+
+}
+
+<main>
+
+    <div class="page-header">
+        <div>
+            <h1 class="font-weight-bold text-black" style="color:black">Sửa thông tin sách</h1>
+            <small>Trang chủ /Sửa thông tin sách</small>
+        </div>
+    </div>
+
+    <div class="page-content borrow-book-infomation">
+        <div class="borrow-book-infomation-left">
+            @using (Html.BeginForm(Html.BeginForm("SuaSach", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.MaSach)
+                @Html.HiddenFor(model => model.Id_TL)
+                @Html.HiddenFor(model => model.TinhTrang)
+
+                <fieldset style="width:400px">
+                    <legend>Thông tin sách</legend>
+                    <div class="borrow-book-item">
+                        <span>Tên sách:</span><br>
+                        <select name="TenSach" class="form-group">
+                        @foreach (var item in kho)
+                        {
+                            <option value="@item.MaSachKho" @(Model.MaKhoSach == item.MaSachKho ? "selected" : "")>@item.TenSach</option>
+                        }
+                    </select>
+                    </div>
+                    <div class="borrow-book-item">
+                        <span>Tác giả:</span><br>
+                        <input type="text" name="TacGia" value="@Model.TacGia"><br>
+                    </div>
+                    <div class="borrow-book-item">
+                        <span>Nhà xuất bản:</span><br>
+                        <input type="text" name="NhaXuatBan" value="@Model.NhaXB"><br>
+                    </div>
+
+                </fieldset>
+                <button class="btn btn-success btn-borrow-book" style="margin-top: 24px; margin-left: 150px" type="submit">Sửa</button>
+            }
+        </div>
+    </div>
+</main>
+<script src="~/Scripts/app.js"></script>
+
+

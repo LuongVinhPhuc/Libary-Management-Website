@@ -1,0 +1,15 @@
+﻿
+@model System.Web.Mvc.HandleErrorInfo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body style="margin-top:80px">
+    <h1 class="text-danger"> Độc giả chưa tạo thẻ thành viên !</h1>
+    <h2 class="text-danger"> Hoặc thẻ thành viên đã được mượn !</h2>
+
+    @Html.ActionLink("Back", @Model.ActionName, @Model.ControllerName)
+</body>
+</html>

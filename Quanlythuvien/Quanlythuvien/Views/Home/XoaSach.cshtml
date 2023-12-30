@@ -1,0 +1,61 @@
+﻿@model Quanlythuvien.Models.Sach
+@{
+    ViewBag.Title = "XoaSach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+
+    <div class="page-header">
+        <div>
+            <h1 class="font-weight-bold text-black" style="color:black">Xóa sách</h1>
+            <small>Trang chủ /Xóa sách</small>
+        </div>
+    </div>
+
+    <div class="page-content borrow-book-infomation">
+        <div class="borrow-book-infomation-left">
+            @using (Html.BeginForm(Html.BeginForm("XoaSach", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.HiddenFor(model => model.MaSach)
+
+            <fieldset style="width:400px">
+                <legend>Thông tin sách</legend>
+                <div class="borrow-book-item">
+                    <span>Tên sách:</span><br>
+                    <input type="text" name="NgayHetHan" value="@Model.MaKhoSach"><br>
+
+                </div>
+                <div class="borrow-book-item">
+                    <span>Tác giả:</span><br>
+                    <input type="text" name="NgayHetHan" value="@Model.TacGia"><br>
+                </div>
+                <div class="borrow-book-item">
+                    <span>Thể loại:</span><br>
+                    <input type="text" name="NgayHetHan" value="@Model.Id_TL"><br>
+                </div>
+
+                <div class="borrow-book-item">
+                    <span>Nhà xuất bản:</span><br>
+                    <input type="text" name="NgayHetHan" value="@Model.NhaXB"><br>
+                </div>
+
+
+                <div class="borrow-book-item">
+                    <span>Tình trạng:</span><br>
+                    <input type="text" name="NgayHetHan" value="@Model.TinhTrang"><br>
+
+                </div>
+
+
+
+            </fieldset>
+                <button class="btn btn-success btn-borrow-book" style="margin-top: 24px; margin-left: 150px" type="submit">Xóa</button>
+            }
+        </div>
+    </div>
+</main>
+
+
